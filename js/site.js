@@ -168,7 +168,9 @@
     a.addEventListener('click', function (e) {
       if (e.metaKey || e.ctrlKey || e.shiftKey) return;
       e.preventDefault(); opener = a;
-      show(visible().indexOf(a)); dlg.showModal();
+      var idx = visible().indexOf(a);
+      if (idx < 0) return;
+      show(idx); dlg.showModal();
     });
   });
   $('.lb-close', dlg).addEventListener('click', function () { dlg.close(); });
